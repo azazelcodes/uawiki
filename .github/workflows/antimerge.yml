@@ -1,0 +1,35 @@
+name: Prevent wiki merges
+
+on:
+  pull_request:
+    branches:
+      - wiki
+      - readme
+      - retype
+
+jobs:
+  prevent-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Block forbidden branch combinations
+        run: |
+          HEAD="${{ github.event.pull_request.head.ref }}"
+          BASE="${{ github.event.pull_request.base.ref }}"
+
+          BLOCKED_BRANCHES=("wiki" "readme" "retype")
+
+          is_blocked_branch() {
+            for b in "${BLOCKED_BRANCHES[@]}"; do
+              if [[ "$1" == "$b" ]]; then
+                return 0
+              fi
+            done
+            return 1
+          }
+
+          if is_blocked_branch "$HEAD" && is_blocked_branch "$BASE" && [[ "$HEAD" != "$BASE" ]]; then
+            echo "❌ Merging between '$HEAD' and '$BASE' is not allowed."
+            exit 1
+          fi
+
+          echo "✅ Merge allowed."
