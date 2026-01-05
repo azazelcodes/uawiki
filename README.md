@@ -1,6 +1,6 @@
 <div align="center">
   
-<img src="upload banner here :D" />
+<img src="https://github.com/user-attachments/assets/a8105e08-3fa4-4570-897d-81980bcf0a31" />
 
 <h2> Unofficial wiki for UNAUTH.xyz </h2>
 
