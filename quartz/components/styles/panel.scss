@@ -1,0 +1,18 @@
+h2.title {
+    border-bottom: 1px solid color-mix(in srgb, var(--txt) 33%, transparent);
+}
+
+div.container {
+flex-shrink:1; display:flex; flex-wrap:wrap; align-content:space-between; justify-content:center; gap:16px 16px; padding-top:6px;
+}
+
+div.item {
+    min-height:125px; background: var(--darken); color:#000; overflow: auto; display:flex;
+}
+
+
+
+p.red-text {
+    color: red !important;
+    cursor: pointer;
+}
