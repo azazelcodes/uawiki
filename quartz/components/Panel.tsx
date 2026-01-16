@@ -2,21 +2,55 @@ import { QuartzComponentProps, QuartzComponentConstructor } from "./types"
 import panelStyle from './styles/panel.scss'
 
 interface Options {
-  favouriteNumber: number
+  title: string
+  content: [string, string][][]
 }
  
 const defaultOptions: Options = {
-  favouriteNumber: 22,
+  title: "",
+  content: [[]]
 }
  
 export default ((userOpts?: Options) => {
   const opts = { ...defaultOptions, ...userOpts }
   function Panel(_props: QuartzComponentProps) {
-    if (opts.favouriteNumber < 0) {
+    if (opts.title.length < 1) {
+      return null
+    }
+    if (opts.content.length < 1 || opts.content[0].length < 1) {
       return null
     }
  
-    return <p class="red-text">{opts.favouriteNumber}</p>
+    return <>
+    <div class="panel" id={opts.title}><div class="pannette"><div class="panneaux">
+      <h2 class="title">{opts.title}</h2>
+      {
+        opts.content.map((col, ri) => {
+          return <div class="container">{
+            col.map((itm, ci) => {
+              const [title, d] = itm;
+              const description = d.split("||");
+              return <div class="item" key={`${ri}-${ci}`}><div>
+                <div class="banner"><a class="panel-link__txt" href={title.toLowerCase()}>{title}</a><a class="panel-link__img" href={title.toLowerCase()}><img src={`static/${title.toLowerCase()}.png`}></img></a></div>
+                <div class="content">
+                  {description.map((group, dgi) => {
+                    const lines = group.split("\n");
+                    return <div key={dgi}>{
+                      lines.map((line, dli) => {
+                        const linkable = line.match(/\[!(.+?)\]/);
+                        const Line = linkable ? 'a' : 'p';
+                        return <Line key={dli} style="margin: 0 !important;" href={ linkable ? linkable[1] : undefined }>{line.replace(/\[!.+?\]/g, "").split(" ").join("")}</Line> // "nofollow" here probably
+                      })
+                      }</div>
+                  })}
+                </div>
+              </div></div>
+            })
+          }</div>
+        })
+      }
+    </div></div></div>
+    </>
   }
  
 

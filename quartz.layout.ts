@@ -40,7 +40,17 @@ export const defaultContentPageLayout: PageLayout = {
     Component.TableOfContents(),
     Component.Explorer(),
   ],
-  right: [
+  right: [ // just register components rendered in other components here, i.e. panel, just used on landing
+    Component.ConditionalRender({
+      component: Component.Flex({
+        components: [
+          {
+            Component: Component.Panel()
+          }, // ADD COMPONENTS HERE
+        ]
+      }),
+      condition: (_) => false,
+    }),
   ],
 }
 
