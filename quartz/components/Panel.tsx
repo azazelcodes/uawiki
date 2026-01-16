@@ -1,6 +1,23 @@
 import { QuartzComponentProps, QuartzComponentConstructor } from "./types"
 import panelStyle from './styles/panel.scss'
 
+/*
+ * Construct via
+ * Panel({
+     title: "Title",
+     content: [ rows
+       [ columns
+         ["Subtitle", "Description text||New column\nNew Line with a link[!https://example.org]"],
+       ],
+     ]
+   });
+ * 
+ * || splits into new column
+ * \n splits into new line
+ * [!LINK] makes whole line a link
+ * 
+ */
+
 interface Options {
   title: string
   content: [string, string][][]
