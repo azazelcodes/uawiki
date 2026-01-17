@@ -277,12 +277,12 @@ export function renderPage(
             </tbody>
           </table>
         </div>
-        <script key="questdataparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { parseQuest } from "https://azazelcodes.github.io/uawiki/quests/questparser.js"; const refresh = () => {let r = parseQuest("${componentData.fileData.slug}");if(r){document.addEventListener("nav", refresh, { once:true })}; console.log("A")}; refresh();` }}></script>
+        <script key="questdataparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { parseQuest } from "/quests/questparser.js"; const refresh = () => {let r = parseQuest("${componentData.fileData.slug}");if(r){document.addEventListener("nav", refresh, { once:true })}; console.log("A")}; refresh();` }}></script>
       </>
       }
       {
         componentData.fileData.slug && componentData.fileData.slug==="quests/index" &&
-          <script key="incompletequestparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { findIncomplete } from "https://azazelcodes.github.io/uawiki/quests/questparser.js"; findIncomplete()` }}></script>
+          <script key="incompletequestparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { findIncomplete } from "/quests/questparser.js"; findIncomplete()` }}></script>
         
       }
 
