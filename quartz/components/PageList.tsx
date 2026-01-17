@@ -70,6 +70,7 @@ export const PageList: QuartzComponent = ({ cfg, fileData, allFiles, limit, sort
         const title = page.frontmatter?.title
         const tags = page.frontmatter?.tags ?? []
 
+        //if (page.slug!.includes("doc-template")) return <></>
         return (
           <li class="section-li">
             <div class="section">

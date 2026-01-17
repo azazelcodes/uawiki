@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "UNAUTH Wiki",
+    pageTitle: "Unauthorized Wiki",
     pageTitleSuffix: " - UAWiki",
     enableSPA: true,
     enablePopovers: true,

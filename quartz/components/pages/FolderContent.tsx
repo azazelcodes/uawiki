@@ -40,7 +40,7 @@ export default ((opts?: Partial<FolderContentOptions>) => {
       folder.children
         .map((node) => {
           // regular file, proceed
-          if (node.data) {
+          if (node.data && !node.slug.includes("doc-template")) {
             return node.data
           }
 

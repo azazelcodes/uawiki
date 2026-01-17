@@ -1,6 +1,116 @@
-div.panel-row {
+@use "../../styles/variables.scss" as *;
+
+$stripe-width: 20px;
+
+
+div.stripes {
+  top: 0;
+  position: absolute;
+  height: 64px;
+  width: 100%;
+  &::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background: repeating-linear-gradient(
+      -30deg,
+      black,
+      black $stripe-width,
+      yellow $stripe-width,
+      yellow ($stripe-width * 2)
+    );
+
+    $fade: linear-gradient(to bottom, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0));
+    -webkit-mask-image: $fade;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    mask-image: $fade;
+    mask-repeat: no-repeat;
+    mask-size: cover;
+  }
+}
+
+div div.spacer {
+  margin: 6rem;
+}
+
+div.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  margin: 0 6%;
+  height: 320px;
+  gap: 8px;
+
+  div.item {
+    background-color: var(--darken);;
+    border: 1px solid color-mix(in srgb, var(--txt) 12%, transparent);
+
+    padding: 12px;
+    
     display: flex !important;
-    flex-wrap: wrap;
-    column-gap: 24;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+    h2.title {
+      width: fit-content;
+      padding: 0 6px;
+      margin: 0;
+    }
+
+    div.title {
+      height: 100%;
+      align-content: center;
+      justify-items: center;
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+
+  div.item-0 {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+
+
+  div.item-1 {
+    grid-column: 1 / span 3;
+    grid-row: 2;
+  }
+
+
+  div.item-2 {
+    grid-column: 4 / span 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+
+@media all and ($mobile) {
+  div.grid {
+    grid-template-rows: repeat(4, 1fr);
+
+    div.item-0 {
+      grid-column: 1 / span 4;
+      grid-row: 1;
+    }
+
+    div.item-1 {
+      grid-column: 1 / span 4;
+      grid-row: 2;
+    }
+
+    div.item-2 {
+      grid-column: 1 / span 4;
+      grid-row: 3 / span 2;
+    }
+  }
+}
+
+h2.title {
+  border-bottom: 1px solid color-mix(in srgb, var(--txt) 33%, transparent);
 }

@@ -8,8 +8,8 @@ export const sharedPageComponents: SharedLayout = {
   afterBody: [],
   footer: Component.Footer({
     links: {
-      GitHub: "https://github.com/jackyzha0/quartz",
-      "Discord Community": "https://discord.gg/cRFFHYye7t",
+      GitHub: "https://github.com/azazelcodes/uawiki",
+      "Discord Community": "https://discord.gg/2S6AN759ES",
     },
   }),
 }
@@ -38,7 +38,25 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     Component.TableOfContents(),
-    Component.Explorer(),
+    Component.Explorer({
+      filterFn: (node) => {if(node.slug.includes("doc-template")) return false; return true},
+      sortFn: (a, b) => {
+        if ((!a.isFolder && !b.isFolder) || (a.isFolder && b.isFolder)) {
+          return a.displayName.localeCompare(b.displayName, undefined, {
+            numeric: true,
+            sensitivity: "base",
+          })
+        }
+
+        if (b.data!.title === "About Unauthorized") return 1
+    
+        if (!a.isFolder && b.isFolder) {
+          return 1
+        } else {
+          return -1
+        }
+      }
+    }),
   ],
   right: [ // just register components rendered in other components here, i.e. panel, just used on landing
     Component.ConditionalRender({
@@ -47,6 +65,9 @@ export const defaultContentPageLayout: PageLayout = {
           {
             Component: Component.Panel()
           }, // ADD COMPONENTS HERE
+          {
+            Component: Component.Landing()
+          },
         ]
       }),
       condition: (_) => false,

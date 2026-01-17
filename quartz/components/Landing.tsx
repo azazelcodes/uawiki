@@ -21,9 +21,27 @@ export default (() => {
   function LandingComponent(props: QuartzComponentProps) {
     return (
       <div>
-        <DM {...props} />
+        <div class="stripes">
+          <DM {...props} />
+        </div>
 
-        <P {...props} />
+        <div class="spacer"></div>
+
+        <div class="grid">
+          <div class="item item-0">
+            <h2 class="title">Welcome to the Unauthorized Wiki!</h2>
+            <div class="title">
+              <p><a>Unauthorized</a> is a PvPvE extraction-type Minecraft server bla bla garabamble.</p>
+              <p>Read more about the server at <a href="about">About Unauthorized</a>.</p>
+            </div>
+          </div>
+          <div class="item item-1">1</div>
+          <div class="item item-2">2</div>
+        </div>
+
+
+        <div class="panel-row"><P {...props} /></div>
+        
       </div>
     )
   }

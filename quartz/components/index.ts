@@ -53,5 +53,5 @@ export {
   Flex,
   ConditionalRender,
   Panel,
-  Landing
+  Landing,
 }

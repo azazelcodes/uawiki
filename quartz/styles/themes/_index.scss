@@ -7,11 +7,72 @@
   --bg: light-dark(rgb(247, 243, 238), rgb(25, 25, 25));
   --darken: light-dark(rgb(238, 231, 221), rgb(20, 20, 20));
   --txt: light-dark(rgb(74, 52, 28), rgb(240, 240, 240));
+  --secondary: red;
+}
+
+@media screen and (max-width: 720px) {
+  .nomobile {
+    display: none !important;
+  }
+}
+
+th {
+  border: 0;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--txt) 3%, transparent) !important;
+}
+
+tr div {
+  flex-direction: column;
+
+  * {
+    margin: 0;
+    text-wrap: wrap;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+}
+
+[data-slug="contributing"] tr th:nth-child(1) {
+  width: 240px !important;
+}
+
+
+div.table-container {
+  thead {
+    background-color: color-mix(in srgb, var(--txt) 6%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--txt) 6%, transparent);
+  }
+
+  table {
+    table-layout: auto;
+    margin: 1rem 0 !important;
+    border: 1px solid color-mix(in srgb, var(--txt) 12%, transparent);
+  }
 }
 
 body {
   div.sidebar {
     background-image: light-dark(url("/static/bg_light.png"), url("/static/bg_dark.png")) !important;
+    display: flex;
+    align-items: center;
+
+    .flex-component,
+    .explorer {
+      width: 88%;
+    }
+
+    .title-button {
+      align-self: center;
+    }
   }
 
   div#quartz-body {
@@ -24,33 +85,33 @@ body {
   }
 
   &[data-slug],
-  &[data-slug] .page > div#quartz-body,
-  .page > div#quartz-body div.center,
-  .page > div#quartz-body footer {
+  &[data-slug] .page>div#quartz-body,
+  .page>div#quartz-body div.center,
+  .page>div#quartz-body footer {
     background-color: var(--bg);
     color: var(--txt);
   }
 
-  .page > div#quartz-body div.sidebar {
+  .page>div#quartz-body div.sidebar {
     background-color: var(--darken);
     color: var(--txt);
   }
 
   &[data-slug] div#quartz-root.page,
-  .page > div#quartz-body div.sidebar.left,
-  .page > div#quartz-body div.sidebar.left:has(.explorer),
-  .page > div#quartz-body div.sidebar.left .explorer .explorer-content {
+  .page>div#quartz-body div.sidebar.left,
+  .page>div#quartz-body div.sidebar.left:has(.explorer),
+  .page>div#quartz-body div.sidebar.left .explorer .explorer-content {
     background-color: var(--darken);
     color: var(--txt);
   }
 
-  .page > div#quartz-body div.sidebar.right {
+  .page>div#quartz-body div.sidebar.right {
     background-color: var(--darken);
     color: var(--txt);
     border-left: 1px solid light-dark(rgb(233, 223, 209), rgb(50, 50, 50));
   }
 
-  .page > div#quartz-body div.sidebar.left {
+  .page>div#quartz-body div.sidebar.left {
     border-right: 1px solid light-dark(rgb(233, 223, 209), rgb(50, 50, 50));
   }
 
@@ -72,7 +133,7 @@ body {
   }
 
   a.internal,
-  .breadcrumb-container .breadcrumb-element > a {
+  .breadcrumb-container .breadcrumb-element>a {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(233, 179, 92), rgb(112, 122, 250));
     cursor: pointer;
@@ -120,7 +181,7 @@ body {
     user-select: text;
   }
 
-  .page article p > strong,
+  .page article p>strong,
   strong {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(240, 100, 119), rgb(208, 66, 85));
@@ -137,7 +198,7 @@ body {
     user-select: text;
   }
 
-  .page article p > b,
+  .page article p>b,
   b {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(240, 100, 119), rgb(208, 66, 85));
@@ -154,7 +215,7 @@ body {
     user-select: text;
   }
 
-  .page article p > em,
+  .page article p>em,
   em {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(124, 155, 255), rgb(112, 122, 250));
@@ -171,7 +232,7 @@ body {
     user-select: text;
   }
 
-  .page article p > i,
+  .page article p>i,
   i {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(124, 155, 255), rgb(112, 122, 250));
@@ -220,28 +281,11 @@ body {
     user-select: text;
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card:hover,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card:focus,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) {
-    background-color: light-dark(
-      rgba(241, 230, 214, 0.7),
-      rgba(18, 18, 18, 0.7)
-    );
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card:hover,
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card:focus,
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) {
+    background-color: light-dark(rgba(241, 230, 214, 0.7),
+        rgba(18, 18, 18, 0.7));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -253,18 +297,9 @@ body {
     color: var(--txt);
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card:has(
-      ~ .result-card.focus:not(
-          :has(~ .result-card:hover, ~ .result-card:focus)
-        ),
-      ~ .result-card:focus,
-      ~ .result-card:hover
-    ) {
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card:has(~ .result-card.focus:not( :has(~ .result-card:hover, ~ .result-card:focus)),
+    ~ .result-card:focus,
+    ~ .result-card:hover) {
     background-color: rgba(0, 0, 0, 0);
     border: 0px var(--txt);
     border-top-left-radius: 4px;
@@ -298,15 +333,7 @@ body {
   }
 
   a.internal.tag-link,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card
-    > ul
-    > li
-    > .match-tag {
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card>ul>li>.match-tag {
     align-items: center;
     background-color: rgba(138, 92, 245, 0.1);
     display: flex;
@@ -327,16 +354,14 @@ body {
     color: light-dark(rgb(233, 179, 92), rgb(112, 122, 250));
   }
 
-  ul > li {
+  ul>li {
     color: var(--txt);
     text-align: start;
   }
 
-  ul > li::marker {
-    background-color: light-dark(
-      rgba(74, 52, 28, 0.9),
-      rgba(240, 240, 240, 0.7)
-    );
+  ul>li::marker {
+    background-color: light-dark(rgba(74, 52, 28, 0.9),
+        rgba(240, 240, 240, 0.7));
     border: 0px light-dark(rgba(74, 52, 28, 0.9), rgba(240, 240, 240, 0.7));
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
@@ -352,16 +377,14 @@ body {
     transition: inherit;
   }
 
-  ol > li {
+  ol>li {
     color: var(--txt);
     text-align: start;
   }
 
-  ol > li::marker {
-    background-color: light-dark(
-      rgba(74, 52, 28, 0.9),
-      rgba(240, 240, 240, 0.7)
-    );
+  ol>li::marker {
+    background-color: light-dark(rgba(74, 52, 28, 0.9),
+        rgba(240, 240, 240, 0.7));
     border: 0px light-dark(rgba(74, 52, 28, 0.9), rgba(240, 240, 240, 0.7));
     border-top-left-radius: 50%;
     border-top-right-radius: 50%;
@@ -392,7 +415,7 @@ body {
     padding: 2.1px 4.2px;
   }
 
-  pre > code,
+  pre>code,
   pre:has(> code) {
     background-color: light-dark(rgb(250, 238, 225), rgb(27, 27, 27));
     border: 0px solid light-dark(rgb(233, 223, 209), rgb(50, 50, 50));
@@ -450,7 +473,7 @@ body {
     top: auto;
   }
 
-  ul > li.task-list-item {
+  ul>li.task-list-item {
     list-style: inherit;
     text-align: start;
     display: list-item;
@@ -464,6 +487,10 @@ body {
     width: auto;
     display: inline;
     background-color: rgba(0, 0, 0, 0);
+    mask-position: inherit;
+    mask-size: inherit;
+    mask-repeat: inherit;
+    mask-image: inherit;
     -webkit-mask-position: inherit;
     -webkit-mask-size: inherit;
     -webkit-mask-repeat: inherit;
@@ -473,10 +500,8 @@ body {
   .page article li:has(> input[type="checkbox"]:checked) {
     color: light-dark(rgba(74, 52, 28, 0.9), rgba(240, 240, 240, 0.7));
     text-decoration: line-through solid rgba(240, 240, 240, 0.7);
-    text-decoration-color: light-dark(
-      rgba(74, 52, 28, 0.9),
-      rgba(240, 240, 240, 0.7)
-    );
+    text-decoration-color: light-dark(rgba(74, 52, 28, 0.9),
+        rgba(240, 240, 240, 0.7));
   }
 
   blockquote {
@@ -495,7 +520,7 @@ body {
     text-decoration: none solid rgba(240, 240, 240, 0.7);
   }
 
-  .search > .search-button {
+  .search>.search-button {
     background-color: light-dark(rgb(241, 230, 214), rgb(18, 18, 18));
     border: 1px solid light-dark(rgb(233, 223, 209), rgb(50, 50, 50));
     border-top-left-radius: 5px;
@@ -509,7 +534,7 @@ body {
     color: var(--txt);
   }
 
-  .search > .search-container > .search-space {
+  .search>.search-container>.search-space {
     background-color: var(--darken);
     border: 1px solid light-dark(rgb(189, 189, 189), rgb(85, 85, 85));
     border-top-left-radius: 12px;
@@ -526,11 +551,10 @@ body {
       rgba(0, 0, 0, 0.2) 0px 30px 90px 0px;
   }
 
-  .search > .search-container > .search-space > input {
+  .search>.search-container>.search-space>input {
     background-color: light-dark(rgb(241, 230, 214), rgb(18, 18, 18));
     border: 0px var(--txt);
-    border-bottom: 1px solid
-      light-dark(rgba(238, 231, 221, 0.5), rgba(20, 20, 20, 0.5));
+    border-bottom: 1px solid light-dark(rgba(238, 231, 221, 0.5), rgba(20, 20, 20, 0.5));
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -542,7 +566,7 @@ body {
     box-shadow: none;
   }
 
-  .search > .search-container > .search-space > * {
+  .search>.search-container>.search-space>* {
     background-color: rgba(0, 0, 0, 0);
     color: var(--txt);
     cursor: auto;
@@ -558,8 +582,8 @@ body {
     user-select: text;
   }
 
-  .search > .search-container > .search-space > .search-layout,
-  .search > .search-container > .search-space > .search-layout.display-results {
+  .search>.search-container>.search-space>.search-layout,
+  .search>.search-container>.search-space>.search-layout.display-results {
     border: 1px solid light-dark(rgb(189, 189, 189), rgb(85, 85, 85));
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -571,20 +595,11 @@ body {
     border-end-end-radius: 12px;
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container {
+  .search>.search-container>.search-space>.search-layout>.results-container {
     color: var(--txt);
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    .result-card {
+  .search>.search-container>.search-space>.search-layout>.results-container .result-card {
     border: 0px var(--txt);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -596,74 +611,21 @@ body {
     border-end-end-radius: 4px;
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:hover,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:focus,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) {
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:hover,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:focus,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) {
     color: var(--txt);
     font-weight: 400;
-    background-color: light-dark(
-      rgba(241, 230, 214, 0.7),
-      rgba(18, 18, 18, 0.7)
-    );
+    background-color: light-dark(rgba(241, 230, 214, 0.7),
+        rgba(18, 18, 18, 0.7));
   }
 
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:hover
-    .card-title,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:hover
-    .card-description,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:focus
-    .card-title,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card:focus
-    .card-description,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus))
-    .card-title,
-  .search
-    > .search-container
-    > .search-space
-    > .search-layout
-    > .results-container
-    > .result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus))
-    .card-description {
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:hover .card-title,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:hover .card-description,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:focus .card-title,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card:focus .card-description,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) .card-title,
+  .search>.search-container>.search-space>.search-layout>.results-container>.result-card.focus:not(:has(~ .result-card:hover, ~ .result-card:focus)) .card-description {
     color: var(--txt);
   }
 
@@ -727,8 +689,7 @@ body {
 
   .callout {
     --callout-color: inherit;
-    border: 0px solid
-      light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
+    border: 0px solid light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -760,25 +721,22 @@ body {
     stroke: inherit;
   }
 
-  .callout .callout-title > .callout-title-inner > p {
+  .callout .callout-title>.callout-title-inner>p {
     color: light-dark(rgb(8, 109, 221), rgb(2, 122, 255));
     font-weight: 600;
   }
 
-  .callout > .callout-content {
+  .callout>.callout-content {
     background-color: rgba(0, 0, 0, 0);
     padding: 0px;
   }
 
   .callout[data-callout="note"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(8, 109, 221, 0.1),
-      rgba(2, 122, 255, 0.1)
-    );
+    background-color: light-dark(rgba(8, 109, 221, 0.1),
+        rgba(2, 122, 255, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
+    border: 0px solid light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -796,13 +754,10 @@ body {
 
   .callout[data-callout="abstract"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(0, 191, 188, 0.1),
-      rgba(83, 223, 221, 0.1)
-    );
+    background-color: light-dark(rgba(0, 191, 188, 0.1),
+        rgba(83, 223, 221, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(0, 191, 188, 0.25), rgba(83, 223, 221, 0.25));
+    border: 0px solid light-dark(rgba(0, 191, 188, 0.25), rgba(83, 223, 221, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -820,13 +775,10 @@ body {
 
   .callout[data-callout="info"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(8, 109, 221, 0.1),
-      rgba(2, 122, 255, 0.1)
-    );
+    background-color: light-dark(rgba(8, 109, 221, 0.1),
+        rgba(2, 122, 255, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
+    border: 0px solid light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -844,13 +796,10 @@ body {
 
   .callout[data-callout="todo"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(8, 109, 221, 0.1),
-      rgba(2, 122, 255, 0.1)
-    );
+    background-color: light-dark(rgba(8, 109, 221, 0.1),
+        rgba(2, 122, 255, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
+    border: 0px solid light-dark(rgba(8, 109, 221, 0.25), rgba(2, 122, 255, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -868,13 +817,10 @@ body {
 
   .callout[data-callout="tip"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(0, 191, 188, 0.1),
-      rgba(83, 223, 221, 0.1)
-    );
+    background-color: light-dark(rgba(0, 191, 188, 0.1),
+        rgba(83, 223, 221, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(0, 191, 188, 0.25), rgba(83, 223, 221, 0.25));
+    border: 0px solid light-dark(rgba(0, 191, 188, 0.25), rgba(83, 223, 221, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -892,13 +838,10 @@ body {
 
   .callout[data-callout="success"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(8, 185, 78, 0.1),
-      rgba(68, 207, 110, 0.1)
-    );
+    background-color: light-dark(rgba(8, 185, 78, 0.1),
+        rgba(68, 207, 110, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(8, 185, 78, 0.25), rgba(68, 207, 110, 0.25));
+    border: 0px solid light-dark(rgba(8, 185, 78, 0.25), rgba(68, 207, 110, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -916,13 +859,10 @@ body {
 
   .callout[data-callout="question"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(236, 117, 0, 0.1),
-      rgba(233, 151, 63, 0.1)
-    );
+    background-color: light-dark(rgba(236, 117, 0, 0.1),
+        rgba(233, 151, 63, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(236, 117, 0, 0.25), rgba(233, 151, 63, 0.25));
+    border: 0px solid light-dark(rgba(236, 117, 0, 0.25), rgba(233, 151, 63, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -940,13 +880,10 @@ body {
 
   .callout[data-callout="warning"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(236, 117, 0, 0.1),
-      rgba(233, 151, 63, 0.1)
-    );
+    background-color: light-dark(rgba(236, 117, 0, 0.1),
+        rgba(233, 151, 63, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(236, 117, 0, 0.25), rgba(233, 151, 63, 0.25));
+    border: 0px solid light-dark(rgba(236, 117, 0, 0.25), rgba(233, 151, 63, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -964,13 +901,10 @@ body {
 
   .callout[data-callout="danger"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(233, 49, 71, 0.1),
-      rgba(251, 70, 76, 0.1)
-    );
+    background-color: light-dark(rgba(233, 49, 71, 0.1),
+        rgba(251, 70, 76, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
+    border: 0px solid light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -988,13 +922,10 @@ body {
 
   .callout[data-callout="failure"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(233, 49, 71, 0.1),
-      rgba(251, 70, 76, 0.1)
-    );
+    background-color: light-dark(rgba(233, 49, 71, 0.1),
+        rgba(251, 70, 76, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
+    border: 0px solid light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -1012,13 +943,10 @@ body {
 
   .callout[data-callout="bug"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(233, 49, 71, 0.1),
-      rgba(251, 70, 76, 0.1)
-    );
+    background-color: light-dark(rgba(233, 49, 71, 0.1),
+        rgba(251, 70, 76, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
+    border: 0px solid light-dark(rgba(233, 49, 71, 0.25), rgba(251, 70, 76, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -1036,13 +964,10 @@ body {
 
   .callout[data-callout="example"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(120, 82, 238, 0.1),
-      rgba(168, 130, 255, 0.1)
-    );
+    background-color: light-dark(rgba(120, 82, 238, 0.1),
+        rgba(168, 130, 255, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(120, 82, 238, 0.25), rgba(168, 130, 255, 0.25));
+    border: 0px solid light-dark(rgba(120, 82, 238, 0.25), rgba(168, 130, 255, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -1060,13 +985,10 @@ body {
 
   .callout[data-callout="quote"] {
     --callout-color: inherit;
-    background-color: light-dark(
-      rgba(124, 155, 255, 0.1),
-      rgba(112, 122, 250, 0.1)
-    );
+    background-color: light-dark(rgba(124, 155, 255, 0.1),
+        rgba(112, 122, 250, 0.1));
     mix-blend-mode: lighten;
-    border: 0px solid
-      light-dark(rgba(124, 155, 255, 0.25), rgba(112, 122, 250, 0.25));
+    border: 0px solid light-dark(rgba(124, 155, 255, 0.25), rgba(112, 122, 250, 0.25));
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -1082,7 +1004,7 @@ body {
     stroke: rgb(112, 122, 250);
   }
 
-  .katex-display > .katex {
+  .katex-display>.katex {
     display: block;
     text-align: center;
     white-space-collapse: break-spaces;
@@ -1116,17 +1038,14 @@ body {
     transition-timing-function: ease;
   }
 
-  .explorer
-    .explorer-content
-    li:has(> .folder-outer:not(.open))
-    > .folder-container {
+  .explorer .explorer-content li:has(> .folder-outer:not(.open))>.folder-container {
     color: light-dark(rgba(74, 52, 28, 0.9), rgba(240, 240, 240, 0.7));
     cursor: default;
     font-weight: 400;
     text-decoration: none solid rgba(240, 240, 240, 0.7);
   }
 
-  .explorer .explorer-content li:has(> .folder-outer.open) > .folder-container {
+  .explorer .explorer-content li:has(> .folder-outer.open)>.folder-container {
     color: light-dark(rgba(74, 52, 28, 0.9), rgba(240, 240, 240, 0.7));
     cursor: default;
     font-weight: 400;
@@ -1136,53 +1055,64 @@ body {
   --current-page-slug: attr(data-slug raw-string);
 
   .search {
-    & > .search-button {
+    &>.search-button {
       font-size: 1rem;
+
       svg {
         color: var(--search-icon-color, var(--text-muted, var(--darkgray)));
         stroke: var(--search-icon-color, var(--text-muted, var(--darkgray)));
       }
     }
-    & > .search-container {
-      & > .search-space {
+
+    &>.search-container {
+      &>.search-space {
         margin: 12vh auto;
-        & > input {
+
+        &>input {
           margin-bottom: 0;
           border-bottom: none;
           border-top-left-radius: inherit;
           border-top-right-radius: inherit;
           font-size: 1.1rem;
+
           &:has(+ :not(.display-results)) {
             border-radius: inherit;
           }
         }
-        & > * {
+
+        &>* {
           background: transparent;
           margin-bottom: 0;
           box-shadow: none;
         }
-        & > .search-layout {
+
+        &>.search-layout {
           &.display-results {
             border-top-left-radius: 0;
             border-top-right-radius: 0;
           }
+
           & .highlight {
             background-color: var(--quartz-text-highlight);
           }
-          & > .results-container {
+
+          &>.results-container {
             & .result-card {
               @media all and not ($mobile) {
                 display: flex;
+
                 &.no-match {
                   display: block;
                 }
               }
+
               &:has(~ .result-card:hover),
               &:has(~ .result-card:focus),
               &:has(~ .result-card.focus) {
                 background-color: unset;
               }
-              & > ul > li > p {
+
+              &>ul>li>p {
                 background-color: transparent;
               }
             }
@@ -1194,11 +1124,12 @@ body {
 
   .explorer {
     @media all and ($mobile) {
-      &:not(.collapsed) > .explorer-content {
+      &:not(.collapsed)>.explorer-content {
         -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
       }
     }
+
     .explorer-content {
       .folder-container {
         --folder-closed-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
@@ -1212,10 +1143,12 @@ body {
           padding-inline-end: 0rem;
           border-radius: 0.25rem;
         }
-        & > svg {
+
+        &>svg {
           opacity: 0.001;
           position: absolute;
         }
+
         &:before {
           width: 1rem;
           height: 1rem;
@@ -1226,9 +1159,11 @@ body {
           background: var(--quartz-icon-color);
           content: "";
         }
-        & > div {
+
+        &>div {
           width: 100%;
         }
+
         &:hover {
           font-size: 1rem;
           line-height: 1.5rem;
@@ -1236,19 +1171,20 @@ body {
           border-radius: 0.25rem;
         }
       }
-      li:has(> .folder-outer:not(.open)) > .folder-container:before {
-        background: var(
-          --collapse-icon-color-collapsed,
-          var(--quartz-icon-color)
-        );
+
+      li:has(> .folder-outer:not(.open))>.folder-container:before {
+        background: var(--collapse-icon-color-collapsed,
+            var(--quartz-icon-color));
         mask-image: var(--folder-closed-icon);
         -webkit-mask-image: var(--folder-closed-icon);
       }
-      li:has(> .folder-outer.open) > .folder-container:before {
+
+      li:has(> .folder-outer.open)>.folder-container:before {
         background: var(--collapse-icon-color, var(--quartz-icon-color));
         mask-image: var(--folder-open-icon);
         -webkit-mask-image: var(--folder-open-icon);
       }
+
       ul.explorer-ul li {
         text-overflow: ellipsis;
         position: relative;
@@ -1267,21 +1203,25 @@ body {
             background-color: var(--nav-item-background-hover);
             border-radius: 0.25rem;
           }
+
           &[data-for$="/index"] {
             padding-inline-start: 0.5rem;
             padding-inline-end: 0;
           }
+
           padding-inline-start: 0;
 
           @media all and ($mobile) {
             padding-inline-start: 0.5rem;
             padding-inline-end: 0.5rem;
+
             &[data-for$="/index"] {
               padding-inline-end: 0.5rem;
             }
           }
         }
-        > a:before {
+
+        >a:before {
           --file-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill=""><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8 16h8v2H8zm0-4h8v2H8zm6-10H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>');
           width: 1rem;
           height: 1rem;
@@ -1309,7 +1249,7 @@ body {
   }
 
   @media all and not ($desktop) {
-    .page > div#quartz-body div.sidebar.right {
+    .page>div#quartz-body div.sidebar.right {
       background-color: transparent;
       border-left: none;
     }
@@ -1324,13 +1264,15 @@ body {
       max-width: 100%;
       padding: 0;
       margin: 0;
+
       div#quartz-body {
-        width: min(100%, calc(#{map.get($breakpoints, desktop)} + 640px));
-        max-width: min(100%, calc(#{map.get($breakpoints, desktop)} + 640px));
+        width: 100%;
         padding: 0 auto;
       }
     }
-    .page > #quartz-body {
+
+    .page>#quartz-body {
+
       div.center,
       footer {
         min-width: calc(100% - 3rem);
@@ -1346,7 +1288,7 @@ body {
   }
 
   @media all and ($tablet) {
-    .page > #quartz-body {
+    .page>#quartz-body {
       padding-left: 0;
       padding-right: 0;
 
@@ -1370,11 +1312,12 @@ body {
   }
 
   @media all and ($mobile) {
-    .page > div#quartz-body div.sidebar.left {
+    .page>div#quartz-body div.sidebar.left {
       background-color: transparent;
       border-right: none;
     }
-    .page > #quartz-body {
+
+    .page>#quartz-body {
       padding: 0;
 
       div.center,
@@ -1391,10 +1334,12 @@ body {
         width: 100%;
         max-width: 100%;
       }
+
       div.sidebar.right,
       footer {
         padding: 0 1.5rem;
       }
+
       footer {
         min-width: auto;
       }
@@ -1405,58 +1350,73 @@ body {
         padding-right: 1rem;
       }
     }
+
     .page-title {
       display: none;
     }
   }
 
-  .callout.is-collapsed .callout-content > :first-child {
+  .callout.is-collapsed .callout-content> :first-child {
     margin-top: -4rem;
   }
-  
+
   blockquote.callout {
-    .callout-title > .callout-title-inner > p {
+    .callout-title>.callout-title-inner>p {
       color: var(--color);
     }
+
     &[data-callout] {
       --color: rgb(var(--callout-info));
     }
+
     &[data-callout="note"] {
       --color: rgb(var(--callout-default));
     }
+
     &[data-callout="abstract"] {
       --color: rgb(var(--callout-summary));
     }
+
     &[data-callout="info"] {
       --color: rgb(var(--callout-info));
     }
+
     &[data-callout="todo"] {
       --color: rgb(var(--callout-todo));
     }
+
     &[data-callout="tip"] {
       --color: rgb(var(--callout-tip));
     }
+
     &[data-callout="success"] {
       --color: rgb(var(--callout-success));
     }
+
     &[data-callout="question"] {
       --color: rgb(var(--callout-question));
     }
+
     &[data-callout="warning"] {
       --color: rgb(var(--callout-warning));
     }
+
     &[data-callout="failure"] {
       --color: rgb(var(--callout-fail));
     }
+
     &[data-callout="danger"] {
       --color: rgb(var(--callout-bug));
     }
+
     &[data-callout="bug"] {
       --color: rgb(var(--callout-bug));
     }
+
     &[data-callout="example"] {
       --color: rgb(var(--callout-example));
     }
+
     &[data-callout="quote"] {
       --color: rgb(var(--callout-quote));
     }

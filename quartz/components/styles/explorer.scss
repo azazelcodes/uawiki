@@ -198,12 +198,13 @@ button.desktop-explorer {
 }
 
 .folder-icon {
-  margin-right: 5px;
-  color: var(--secondary);
+  margin: 0 8px;
+  stroke: var(--txt) !important;
   cursor: pointer;
   transition: transform 0.3s ease;
   backface-visibility: visible;
   flex-shrink: 0;
+  opacity: 0.33 !important;
 }
 
 li:has(> .folder-outer:not(.open)) > .folder-container > svg {
@@ -211,7 +212,7 @@ li:has(> .folder-outer:not(.open)) > .folder-container > svg {
 }
 
 .folder-icon:hover {
-  color: var(--tertiary);
+  opacity: 0.66 !important;
 }
 
 .explorer {

@@ -448,6 +448,10 @@ export async function handleBuild(argv) {
         if (fs.existsSync(path.posix.join(argv.output, indexFp))) {
           return redirect(fp + "/")
         }
+
+
+        // if not, and its a quest, we show just a base
+        if (base.startsWith("/quests/")) return redirect("/quests/doc-template?" + base.split("/").filter(Boolean).pop())
       }
 
       return serve()

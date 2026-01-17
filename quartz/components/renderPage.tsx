@@ -252,6 +252,40 @@ export function renderPage(
 
   const RightComponent = (
     <div class="right sidebar">
+      {
+      componentData.fileData.slug && componentData.fileData.slug.includes("quests") && !componentData.fileData.slug.includes("index") && !(componentData.fileData.slug.split("/").length-1 > 1) && <>
+        <div class="quest">
+          <div class="title"><h2 class="title" id="qtitle">Unknown</h2></div>
+          <table class="infobox-rows" cellSpacing="1" cellPadding="4">
+            <tbody>
+              <tr>
+                <th><a href="../npcs">Giver</a></th>
+                <td><a id="qgiver"></a></td>
+              </tr>
+              <tr>
+                <th><p>Description</p></th>
+                <td><p id="qdesc"></p></td>
+              </tr>
+              <tr>
+                <th><p>Conditions</p></th>
+                <td><div id="qcond"></div></td>
+              </tr>
+              <tr>
+                <th><p>Rewards</p></th>
+                <td><div id="qrew"></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <script key="questdataparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { parseQuest } from "/quests/questparser.js"; const refresh = () => {let r = parseQuest("${componentData.fileData.slug}");if(r){document.addEventListener("nav", refresh, { once:true })}; console.log("A")}; refresh();` }}></script>
+      </>
+      }
+      {
+        componentData.fileData.slug && componentData.fileData.slug==="quests/index" &&
+          <script key="incompletequestparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { findIncomplete } from "/quests/questparser.js"; findIncomplete()` }}></script>
+        
+      }
+
       {right.map((BodyComponent) => (
         <BodyComponent {...componentData} />
       ))}
