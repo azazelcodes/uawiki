@@ -220,6 +220,7 @@ export function renderPage(
   components: RenderComponents,
   pageResources: StaticResources,
 ): string {
+  const baseURL = componentData.ctx.cfg.configuration.baseUrl;
   // make a deep copy of the tree so we don't remove the transclusion references
   // for the file cached in contentMap in build.ts
   const root = clone(componentData.tree) as Root
@@ -277,12 +278,12 @@ export function renderPage(
             </tbody>
           </table>
         </div>
-        <script key="questdataparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { parseQuest } from "/quests/questparser.js"; const refresh = () => {let r = parseQuest("${componentData.fileData.slug}");if(r){document.addEventListener("nav", refresh, { once:true })}; console.log("A")}; refresh();` }}></script>
+        <script key="questdataparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { parseQuest } from "${baseURL}/quests/questparser.js"; const refresh = () => {let r = parseQuest("${componentData.fileData.slug}");if(r){document.addEventListener("nav", refresh, { once:true })}; console.log("A")}; refresh();` }}></script>
       </>
       }
       {
         componentData.fileData.slug && componentData.fileData.slug==="quests/index" &&
-          <script key="incompletequestparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { findIncomplete } from "/quests/questparser.js"; findIncomplete()` }}></script>
+          <script key="incompletequestparse" type="module" id="pqs" dangerouslySetInnerHTML={{ __html: `import { findIncomplete } from "${baseURL}/quests/questparser.js"; findIncomplete()` }}></script>
         
       }
 

@@ -61,7 +61,7 @@ div.table-container {
 
 body {
   div.sidebar {
-    background-image: light-dark(url("/static/bg_light.png"), url("/static/bg_dark.png")) !important;
+    background-image: light-dark(url("#{$baseURL}/static/bg_light.png"), url("#{$baseURL}/static/bg_dark.png")) !important;
     display: flex;
     align-items: center;
 
