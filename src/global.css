@@ -1,0 +1,15 @@
+:root {
+    --mc-gray: #A8A8A8
+}
+
+html, body {
+    margin: 0
+}
+
+@font-face {
+  font-family: 'mc7';
+  src: url('/assets/Minecraft_Seven_v3.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

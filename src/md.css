@@ -1,0 +1,81 @@
+/*
+ * BASE
+ */
+
+p > img {
+    height: 128px
+}
+
+
+
+/*
+ * markdown-it-github-alert
+ * https://github.com/ByPikod/markdown-it-github-alert?tab=readme-ov-file#styling
+ */
+
+.markdown-alert {
+    padding: 1em;
+    border-left: 0.25rem solid;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    border-color: var(--border-color);
+}
+
+.markdown-alert > span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--border-color);
+}
+
+.markdown-alert .markdown-alert-icon {
+    margin-right: 0.5em;
+    fill: var(--border-color);
+}
+
+.markdown-alert.note {
+    --border-color: #539BF5;
+}
+
+.markdown-alert.warning {
+    --border-color: #C69026;
+}
+
+.markdown-alert.important {
+    --border-color: #986EE2;
+}
+
+.markdown-alert.caution {
+    --border-color: #E5534B;
+}
+
+.markdown-alert.tip {
+    --border-color: #57AB5A;
+}
+
+/*
+ * markdown-it-ins
+ */
+ins {
+    font-family: "mc7";
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+/*
+ * markdown-it-mark
+ * not sure about this
+ */
+mark {
+    background: repeating-linear-gradient(
+        -24deg,
+        yellow,
+        yellow 0.5em,
+        black 0.5em,
+        black 1em
+    );
+    border-radius: 0.25em;
+    color: black;
+    padding: 0.2em 0.5em;
+    text-shadow: 2px 2px 0 yellow, 2px -2px 0 yellow, -2px 2px 0 yellow, -2px -2px 0 yellow, 2px 0px 0 yellow, 0px 2px 0 yellow, -2px 0px 0 yellow, 0px -2px 0 yellow; // VERY BUGGY
+}
