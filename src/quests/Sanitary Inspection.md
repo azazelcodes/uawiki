@@ -119,6 +119,22 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
+## Admonitions
+> [!NOTE]
+> Note Alert Example
+
+> [!TIP]
+> Tip Alert Example
+
+> [!IMPORTANT]
+> Important Alert Example
+
+> [!WARNING]
+> Warning Alert Example
+
+> [!CAUTION]
+> Caution Alert Example
+
 ## Tables
 
 | Option | Description |

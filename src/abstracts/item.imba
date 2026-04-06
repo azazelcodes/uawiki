@@ -4,10 +4,7 @@ import { capitalize } from '../util.imba'
 export tag Item
 	def routed
 		id = route.params.id
-		item = {}
-		items = await (await window.fetch(`https://raw.githubusercontent.com/azazelcodes/uaapi/refs/heads/master/items.json`)).json()
-		if items[id]
-			item = items[id]
+		item = await (await window.fetch(`https://raw.githubusercontent.com/azazelcodes/uaapi/refs/heads/master/items/{id}.json`)).json()
 		text = await (await window.fetch(`/src/items/{item.name}.md`)).text()
 	
 	css a,p p:0 m:0

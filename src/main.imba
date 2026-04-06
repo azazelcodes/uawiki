@@ -4,8 +4,8 @@ import { NPC } from './abstracts/npc.imba'
 import { Index } from './index.imba'
 import { Navbar } from './navbar.imba'
 
-import './global.css'
-import './global.css.imba'
+import './css/global.css'
+import './css/global.css.imba'
 
 global css body c:white bg:warm9 ff:Arial inset:0 d:vcc
 
