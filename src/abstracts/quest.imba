@@ -43,10 +43,11 @@ tag quest_rep
 tag quest_items
 	data
 	<self> for own i,a of data
-		<a route-to=`/item/{i}`> if items[i]
-			items[i].name
-		else
-			capitalize(i)
+		itemData = await (await window.fetch(`https://raw.githubusercontent.com/azazelcodes/uaapi/refs/heads/master/items/{i}.json`)).json()
+		n = capitalize(i)
+		if itemData
+			n = itemData.name
+		<a route-to=`/item/{i}`> a+" "+n
 
 tag quest_cur
 	data
@@ -67,9 +68,6 @@ export tag Quest
 		if (route.params.by === undefined)
 			issuer = route.path.split('/')[-2]
 		data = await (await window.fetch(`https://raw.githubusercontent.com/azazelcodes/uaapi/refs/heads/master/quests/{issuer}/{id}.json`)).json()
-
-		if data.rew && data.rew.items && Object.keys(data.rew.items).length > 0
-			items = await (await window.fetch(`https://raw.githubusercontent.com/azazelcodes/uaapi/refs/heads/master/items.json`)).json()
 
 		text = await (await window.fetch(`/src/quests/{data.name}.md`)).text()
 
@@ -109,4 +107,4 @@ export tag Quest
 				<tr>
 					<th> "Rewards: "
 					<td [d:flex flex-direction:column gap:2]> for own k,v of data.rew
-						<{"quest_"+k} data=v items=items>
+						<{"quest_"+k} data=v>
